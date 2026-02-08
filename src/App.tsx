@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react"
 import { Route, BrowserRouter, Routes, useLocation } from "react-router-dom"
 import Header from "./components/Header"
+import { AuthProvider } from "./context/authContext"
 
 const Home = lazy(() => import("./pages/home"))
 const About = lazy(() => import("./pages/About"))
@@ -23,6 +24,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <Suspense
         fallback={
@@ -46,6 +48,7 @@ function App() {
         </Layout>
       </Suspense>
     </BrowserRouter>
+    </AuthProvider>
   )
 }
 

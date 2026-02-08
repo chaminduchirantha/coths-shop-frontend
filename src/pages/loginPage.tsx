@@ -1,5 +1,69 @@
+import { useState, type FormEvent } from "react";
+import { useAuth } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
+import { getMyDetails, login } from "../services/auth";
 
 function LoginPage() {
+   const navigate = useNavigate();
+
+  const { setUser } = useAuth()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+
+  const handleLogin = async (e:FormEvent) => {
+    e.preventDefault()
+
+    if (!email || !password) {
+      alert("Missing Fields, Please fill all required fields.");
+      return
+    }
+
+    try {
+      const res = await login(email, password)
+      console.log(res.data.accessToken)
+
+      if (!res.data.accessToken) {
+        alert("Invalid email or password.");
+        return
+      }
+
+      await localStorage.setItem("accessToken", res.data.accessToken)
+
+      const detail = await getMyDetails()
+
+      const userData = ({
+        ...detail.data,
+        roles: detail.data.role    
+      })
+
+      setUser(userData);
+
+      localStorage.setItem("user", JSON.stringify(detail.data))
+
+      alert(`Welcome Back Login Successful`);
+
+      setTimeout(() => {
+        if (userData.roles?.includes("ADMIN")) {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      }, 1000);
+
+    } catch (err :any) {
+      console.error(err)
+
+      if (err.response?.status === 401 || err.response?.status === 400) {
+       alert("Invalid email or password.");
+      } else {
+       alert("Error,Something went wrong. Try again.");
+      }
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 md:p-10 pt-28">
       <div className="max-w-6xl w-full bg-slate-800/40 backdrop-blur-xl rounded-4xl border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl">
@@ -10,12 +74,14 @@ function LoginPage() {
             <p className="text-slate-400 text-sm">Sign in to continue your journey with us.</p>
           </div>
 
-          <form className="space-y-6" onClick={(e) => e.preventDefault()}>
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div>
               <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Email Address</label>
               <input 
                 type="email" 
                 placeholder="john@example.com" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-600"
               />
             </div>
@@ -25,12 +91,31 @@ function LoginPage() {
               <input 
                 type="password" 
                 placeholder="••••••••" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-600"
+                disabled={loading}
               />
             </div>
 
-            <button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-indigo-500/20 active:scale-[0.98]">
-              Login
+            <div className="flex items-center justify-between mb-4">
+              <label className="flex items-center text-sm">
+                <input 
+                  type="checkbox" 
+                  className="mr-2 accent-sky-600" 
+                  checked={showPassword}
+                  onChange={(e) => setShowPassword(e.target.checked)}
+                  disabled={loading}
+                />
+                Show Password
+              </label>
+            </div>
+
+            <button 
+              type="submit"
+              disabled={loading}
+              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-indigo-500/20 active:scale-[0.98]">
+              {loading ? "Signing In..." : "Sign In"}
             </button>
 
             <div className="relative my-8">

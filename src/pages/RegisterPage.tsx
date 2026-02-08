@@ -1,5 +1,49 @@
+import { useState, type FormEvent } from "react"
+import { register } from "../services/auth"
+import { useNavigate } from "react-router"
 
 function Register() {
+  const navigate = useNavigate()
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [conPassword, setConPassword] = useState("")
+  const [role] = useState("USER")
+
+  const handleRegister = async (e: FormEvent) => {
+    e.preventDefault()
+
+    if (!username || !email || !password || !conPassword) {
+      alert("All fields are required.")
+      return
+    }
+
+    if (password !== conPassword) {
+      alert("Password do not match.")
+      return
+    }
+
+    try {
+      const obj = {
+        username,
+        email,
+        password,
+        role
+      }
+      const res: any = await register(obj)
+      console.log(res.data)
+      console.log(res.message)
+
+      alert(`Reginstration successful! Email: ${res?.data?.email}`)
+      
+      navigate("/login")
+
+    } catch (err: any) {
+      console.error(err?.response?.data)
+    }
+  }
+
+
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 md:p-10 pt-28">
       <div className="max-w-6xl w-full bg-slate-800/40 backdrop-blur-xl rounded-4xl border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl">
@@ -25,12 +69,14 @@ function Register() {
             <p className="text-slate-400 text-sm">Welcome! Please enter your details.</p>
           </div>
 
-          <form className="space-y-6" onClick={(e) => e.preventDefault()}>
+          <form className="space-y-6">
             <div>
               <label className="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Full Name</label>
               <input 
                 type="text" 
                 placeholder="John Doe" 
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-600"
               />
             </div>
@@ -40,6 +86,8 @@ function Register() {
               <input 
                 type="email" 
                 placeholder="john@example.com" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-600"
               />
             </div>
@@ -49,6 +97,8 @@ function Register() {
               <input 
                 type="password" 
                 placeholder="••••••••" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-600"
               />
             </div>
@@ -58,11 +108,13 @@ function Register() {
               <input 
                 type="password" 
                 placeholder="••••••••" 
+                value={conPassword}
+                onChange={(e) => setConPassword(e.target.value)}
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-600"
               />
             </div>
 
-            <button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-indigo-500/20 active:scale-[0.98]">
+            <button className="w-full bg-indigo-600 hover:bg-indigo-500 cursor-pointer text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-indigo-500/20 active:scale-[0.98]" onClick={handleRegister} >
               Create Account
             </button>
 
