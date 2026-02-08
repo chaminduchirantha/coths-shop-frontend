@@ -8,11 +8,14 @@ const About = lazy(() => import("./pages/About"))
 const Collection = lazy(() => import("./pages/Collection"))
 const Register = lazy(() => import("./pages/RegisterPage"))
 const Login = lazy(() => import("./pages/loginPage"))
+const AdminDashBoard = lazy(() => import("./pages/AdminDashboard"))
+
+
 
 
 function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const hideHeader = location.pathname === '/register' || location.pathname === '/login';
+  const hideHeader = location.pathname === '/register' || location.pathname === '/login' || location.pathname === '/admin';
 
   return (
     <>
@@ -43,6 +46,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/collection" element={<Collection />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/admin" element={<AdminDashBoard />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </Layout>
