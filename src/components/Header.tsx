@@ -46,6 +46,9 @@ function Header() {
             <li>
               <a href="/product" className="block py-2 px-3 text-slate-300 rounded hover:bg-slate-700 md:hover:bg-transparent md:hover:text-white md:p-0 transition-colors duration-300">Product</a>
             </li>
+             <li>
+              <a href="/feedbacks" className="block py-2 px-3 text-slate-300 rounded hover:bg-slate-700 md:hover:bg-transparent md:hover:text-white md:p-0 transition-colors duration-300">Feedbacks</a>
+            </li>
             <li>
               <a href="/collection" className="block py-2 px-3 text-slate-300 rounded hover:bg-slate-700 md:hover:bg-transparent md:hover:text-white md:p-0 transition-colors duration-300">Collection</a>
             </li>

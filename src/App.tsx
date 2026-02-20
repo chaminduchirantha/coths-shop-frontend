@@ -9,6 +9,8 @@ const Collection = lazy(() => import("./pages/Collection"))
 const Register = lazy(() => import("./pages/RegisterPage"))
 const Login = lazy(() => import("./pages/loginPage"))
 const AdminDashBoard = lazy(() => import("./pages/AdminDashboard"))
+const FeedbackPage = lazy(() => import("./pages/FeeedbackPage"))
+
 
 
 
@@ -48,6 +50,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/admin" element={<AdminDashBoard />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/feedbacks" element={<FeedbackPage />} />
           </Routes>
         </Layout>
       </Suspense>
