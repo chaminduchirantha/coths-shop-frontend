@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import ProductsAdmin from '../components/productsAdmin';
 function AdminDashboard() {
   // 1. Logic: State to track which view to show
   const [activeTab, setActiveTab] = useState('Dashboard');
@@ -12,11 +12,11 @@ function AdminDashboard() {
   ];
 
   // Dummy Product Data
-  const products = [
-    { id: 1, name: 'Premium Silk Gown', stock: 12, price: '$299', category: 'Formal' },
-    { id: 2, name: 'Cotton Summer Tee', stock: 45, price: '$45', category: 'Casual' },
-    { id: 3, name: 'Woolen Overcoat', stock: 8, price: '$180', category: 'Winter' },
-  ];
+  // const products = [
+  //   { id: 1, name: 'Premium Silk Gown', stock: 12, price: '$299', category: 'Formal' },
+  //   { id: 2, name: 'Cotton Summer Tee', stock: 45, price: '$45', category: 'Casual' },
+  //   { id: 3, name: 'Woolen Overcoat', stock: 8, price: '$180', category: 'Winter' },
+  // ];
 
   // 2. Component: Dashboard Content (Your original stats and table)
   const DashboardHome = () => (
@@ -39,41 +39,8 @@ function AdminDashboard() {
     </div>
   );
 
-  // 3. Component: Products Content
   const ProductsView = () => (
-    <div className="animate-in slide-in-from-bottom-4 duration-500 space-y-6">
-      <div className="flex justify-between items-center">
-        <h3 className="text-xl font-bold text-white">Product Inventory</h3>
-        <input type="text" placeholder="Search products..." className="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-      </div>
-      <div className="bg-slate-900 border border-white/5 rounded-2xl overflow-hidden">
-        <table className="w-full text-left">
-          <thead className="bg-slate-800/50 text-slate-500 text-xs uppercase">
-            <tr>
-              <th className="px-6 py-4">Product Name</th>
-              <th className="px-6 py-4">Category</th>
-              <th className="px-6 py-4">Stock</th>
-              <th className="px-6 py-4">Price</th>
-              <th className="px-6 py-4">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-white/5">
-            {products.map((p) => (
-              <tr key={p.id} className="hover:bg-white/5 transition-colors">
-                <td className="px-6 py-4 text-white font-medium">{p.name}</td>
-                <td className="px-6 py-4 text-slate-400">{p.category}</td>
-                <td className="px-6 py-4 text-slate-400">{p.stock} units</td>
-                <td className="px-6 py-4 text-white font-bold">{p.price}</td>
-                <td className="px-6 py-4">
-                  <button className="text-indigo-400 hover:text-indigo-300 mr-4 text-sm">Edit</button>
-                  <button className="text-rose-400 hover:text-rose-300 text-sm">Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <ProductsAdmin />
   );
 
   // 4. Logic: Render the correct view based on activeTab
