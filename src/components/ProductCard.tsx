@@ -61,7 +61,6 @@ const ProductCard = forwardRef<ProductCardHandle, PrductCardProps>(({ onEditClic
 
   return (
     <div className="mt-10 space-y-12">
-  {/* --- Product Grid --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {productList.map((product) => (
             <div
