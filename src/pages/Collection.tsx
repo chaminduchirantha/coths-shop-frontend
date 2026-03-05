@@ -1,4 +1,5 @@
 import  { useState } from 'react';
+import FeedbackList from '../components/FeedbackList';
 
 function Collection() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -97,6 +98,11 @@ function Collection() {
           </div>
         </div>
       </div>
+      
+      <section>
+
+        <FeedbackList/>
+      </section>
     </div>
   );
 }

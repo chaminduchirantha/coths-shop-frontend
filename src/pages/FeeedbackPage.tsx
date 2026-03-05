@@ -1,8 +1,46 @@
-import { useState } from 'react';
+import {useState } from 'react';
+import { feedbackSave } from '../services/feedback';
 
 function CustomerFeedbackForm() {
   const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
+
+  const [customername , setCustomerName] = useState("")
+  const [email , setEmail] = useState("")
+  const [feedback , setFeedback] = useState<string>("")
+  const [hover , setHover] = useState<number>(0)
+  const [ratings , setRatings] = useState<number>(0)
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handelSumbitFeedback =async ()=>{
+    if(!customername || !email || !feedback || !ratings){
+        alert("please fill all Fields")
+        return;
+    }
+
+    setLoading(true);
+
+    const feedbackData = {
+      customername,
+      email,
+      ratings,
+      feedback
+    }
+
+    try{
+      await feedbackSave(feedbackData);
+      alert("Successful Feedback Saved")
+
+      setCustomerName("");
+      setEmail("");
+      setRating(0);
+      setFeedback("");
+    }catch(error){
+      console.log(error)
+      alert("Feedback Submittting Faild")
+    }finally{
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-6 pt-24">
@@ -26,10 +64,9 @@ function CustomerFeedbackForm() {
                 <button
                   key={star}
                   type="button"
-                  className={`text-4xl transition-all duration-200 transform ${
-                    star <= (hover || rating) ? 'text-amber-400 scale-110' : 'text-slate-600'
-                  }`}
-                  onClick={() => setRating(star)}
+                  className={`text-4xl transition-all duration-200 transform cursor-pointer
+                  ${star <= (hover || ratings) ? 'text-amber-400 scale-110' : 'text-slate-600'}`}
+                  onClick={() => setRatings(star)}
                   onMouseEnter={() => setHover(star)}
                   onMouseLeave={() => setHover(0)}
                 >
@@ -49,6 +86,8 @@ function CustomerFeedbackForm() {
               <input 
                 type="text" 
                 placeholder="Enter your name" 
+                value={customername}
+                onChange={(e)=>setCustomerName(e.target.value)}
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-600"
               />
             </div>
@@ -59,6 +98,8 @@ function CustomerFeedbackForm() {
               <input 
                 type="email" 
                 placeholder="email@example.com" 
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-600"
               />
             </div>
@@ -68,14 +109,16 @@ function CustomerFeedbackForm() {
               <label className="block text-slate-300 text-xs font-bold uppercase mb-2 ml-1">Your Message</label>
               <textarea 
                 placeholder="Tell us what you loved or what we can improve..." 
+                value={feedback}
+                onChange={(e)=>setFeedback(e.target.value)}
                 className="w-full bg-slate-900/50 border border-slate-700 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-600 resize-none"
               ></textarea>
             </div>
           </div>
 
           {/* Submit Button */}
-          <button className="w-full bg-linear-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-xl shadow-indigo-600/20 active:scale-[0.98]">
-            Submit Feedback
+          <button onClick={handelSumbitFeedback} disabled={loading} className="w-full bg-linear-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-xl  cursor-pointer shadow-indigo-600/20 active:scale-[0.98]">
+            {loading ?  "Submitting....." : "Submit Feedback"}
           </button>
         </form>
 
