@@ -2,7 +2,7 @@ import ProductsCardUser from '../components/ProductsCardUser';
 
 const ProductPage = () => {
   return (
-    <div className="min-h-screen bg-slate-900 text-white pt-24 pb-20 px-4 md:px-8">
+    <div className="min-h-screen bg-slate-800 text-white pt-24 pb-20 px-4 md:px-8">
       
       {/* Background Glows */}
       <div className="fixed top-[-10%] right-[-10%] w-500px h-500px bg-indigo-600/10 blur-[120px] rounded-full z-0 pointer-events-none"></div>

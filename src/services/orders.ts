@@ -1,6 +1,6 @@
 import api from "./api"
 
-type OrderFishList = {
+type OrdersList = {
     email : string,
     username : string,
     address:string,
@@ -15,8 +15,8 @@ type OrderFishList = {
     status : string,
 }
 
-export const fishOrderSave = async (data: OrderFishList) => {
-  const res = await api.post("/cloths/saveOrders", data)
+export const OrderSave = async (data: OrdersList) => {
+  const res = await api.post("/orders/saveOrders", data)
   return res.data
 }
 

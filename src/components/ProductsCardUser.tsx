@@ -1,6 +1,7 @@
 import { getAllProduct, searchProduct } from "../services/product";
 import { useState, useEffect } from "react";
 import { Search, ShoppingBag, ShoppingCart, ChevronRight, Loader2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface Product {
   _id: string;
@@ -11,6 +12,20 @@ interface Product {
   imageUrl: string;
   size: string;
 }
+
+
+const parsePrice = (price: any): number => {
+  try {
+    if (typeof price === 'number') return price;
+    if (typeof price === 'string') {
+      const cleanPrice = parseFloat(price.replace(/[^0-9.]/g, ''));
+      return isNaN(cleanPrice) ? 0 : cleanPrice;
+    }
+    return 0;
+  } catch {
+    return 0;
+  }
+};
 
 function ProductsCardUser() {
   // Cloth Shop Categories
@@ -66,7 +81,7 @@ function ProductsCardUser() {
   }, [page]);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white pt-24 pb-20 px-4 md:px-8">
+    <div className="min-h-screen bg-slate-800 text-white pt-24 pb-20 px-4 md:px-8">
       {/* Background Glows */}
       <div className="fixed top-[-10%] right-[-10%] w-500px h-500px bg-indigo-600/10 blur-[120px] rounded-full z-0 pointer-events-none"></div>
 
@@ -131,7 +146,7 @@ function ProductsCardUser() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {productList.length > 0 ? (
               productList.map((product) => (
-                <div key={product._id} className="group relative bg-slate-900/40 border border-indigo-300 rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
+                <div key={product._id} className="group relative bg-slate-900/40  rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
                   {/* Image Container */}
                   <div className="h-72 relative overflow-hidden">
                     <img 
@@ -168,11 +183,23 @@ function ProductsCardUser() {
                       <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em] group-hover/btn:text-white transition-colors">Add to Cart</span>
                     </button>
 
-                    <button className="w-full relative overflow-hidden group/btn bg-white text-slate-950 py-4 rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 mt-2 cursor-pointer">
-                      <div className="absolute inset-0 w-0 bg-indigo-600 transition-all duration-300 group-hover/btn:w-full"></div>
-                      <ChevronRight size={16} className="relative z-10 group-hover/btn:text-white transition-colors" />
-                      <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em] group-hover/btn:text-white transition-colors">Order Now</span>
-                    </button>
+                    <Link
+                      to="/orders"
+                      state={{
+                        itemName: product.itemName,
+                        price: parsePrice(product.price),
+                        qty: 1,
+                        image: product.imageUrl,
+                        desciption: product.description,
+                        size: product.size
+                      }}
+                    >
+                      <button className="w-full relative overflow-hidden group/btn bg-indigo-400 text-slate-950 py-4 rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 mt-2 cursor-pointer">
+                        <div className="absolute inset-0 w-0 bg-indigo-600 transition-all duration-300 group-hover/btn:w-full"></div>
+                        <ChevronRight size={16} className="relative z-10 group-hover/btn:text-white transition-colors" />
+                        <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em] group-hover/btn:text-white transition-colors">Order Now</span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               ))

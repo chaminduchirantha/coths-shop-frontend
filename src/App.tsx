@@ -14,6 +14,8 @@ const FeedbackPage = lazy(() => import("./pages/FeeedbackPage"))
 const ProductsPage = lazy(() => import("./pages/ProductsPage"))
 const ServicesPage = lazy(() => import("./pages/Services"))
 const ContactPage = lazy(() => import("./pages/ContactPage"))
+const OrdersPage = lazy(() => import("./pages/Orders"))
+
 
 type RequireAuthTypes = { children: ReactNode; roles?: string[] };
 
@@ -94,6 +96,7 @@ function App() {
             <Route path="/product" element={<ProductsPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/orders" element={<RequireAuth roles={["USER"]}><OrdersPage /></RequireAuth>} />
           </Routes>
         </Layout>
       </Suspense>
