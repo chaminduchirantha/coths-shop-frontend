@@ -1,19 +1,19 @@
 
 function Home() {
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center font-sans">
+    <div className="min-h-screen bg-white flex items-center justify-center font-sans">
       <section className="max-w-7xl mx-auto px-6 py-12 md:py-20 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
         
         <div className="flex-1 text-center md:text-left space-y-8">
           <div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-600 leading-tight tracking-tight">
               Elevate Your <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-cyan-400">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-700 to-cyan-400">
                 Everyday Style
               </span>
             </h2>
             
-            <p className="mt-6 text-lg text-slate-400 leading-relaxed max-w-lg mx-auto md:mx-0">
+            <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-lg mx-auto md:mx-0">
               Your one-stop destination for the latest fashion trends and quality clothing. 
               Explore our diverse collection and find the perfect fit for your personality.
             </p>
@@ -21,12 +21,12 @@ function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a href="/product" className="group">
-              <button className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 cursor-pointer rounded-full font-semibold hover:bg-slate-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)]">
+              <button className="w-full sm:w-auto px-8 py-4 bg-black text-white cursor-pointer rounded-full font-semibold hover:bg-slate-700 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)]">
                 Shop Now
               </button>
             </a>
             <a href="/collection" className="group">
-              <button className="w-full sm:w-auto cursor-pointer px-8 py-4 border border-slate-600 text-white rounded-full font-medium hover:border-white hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2">
+              <button className="w-full sm:w-auto cursor-pointer px-8 py-4 border border-slate-900 text-black rounded-full font-medium hover:border-black hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2">
                 View Collection
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </button>

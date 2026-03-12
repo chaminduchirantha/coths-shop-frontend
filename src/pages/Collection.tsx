@@ -20,11 +20,11 @@ function Collection() {
     : products.filter(p => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white pt-24 pb-20">
+    <div className="min-h-screen bg-white text-white pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Curated <span className="text-indigo-400">Collection</span></h1>
-          <p className="text-slate-400 mt-2">Discover our 2026 signature pieces.</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-800">Curated <span className="text-indigo-400">Collection</span></h1>
+          <p className="text-slate-900 mt-2">Discover our 2026 signature pieces.</p>
         </div>
         
         <div className="flex flex-wrap gap-3">
@@ -35,7 +35,7 @@ function Collection() {
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
                 activeCategory === cat 
                 ? 'bg-indigo-600 border-indigo-600 text-white' 
-                : 'border-slate-700 text-slate-400 hover:border-slate-500 hover:text-white'
+                : 'border-slate-700 text-slate-400 hover:border-slate-500 hover:text-black'
               }`}
             >
               {cat}
@@ -62,7 +62,7 @@ function Collection() {
 
               <div className="mt-6 flex justify-between items-start">
                 <div>
-                  <h3 className="text-xl font-semibold group-hover:text-indigo-400 transition-colors">
+                  <h3 className="text-xl font-semibold text-indigo-700 group-hover:text-indigo-900 transition-colors">
                     {product.name}
                   </h3>
                   <p className="text-slate-500 text-sm mt-1">Limited Edition</p>

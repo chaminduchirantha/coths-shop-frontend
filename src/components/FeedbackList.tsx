@@ -35,7 +35,7 @@ export default function FeedbackList() {
 
 
   return (
-    <section className="py-24 bg-slate-900 relative overflow-hidden">
+    <section className="py-24 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -44,10 +44,10 @@ export default function FeedbackList() {
             <span className="text-indigo-400 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">
                 Testimonials
             </span>
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6 italic">
+            <h2 className="text-4xl md:text-6xl font-black text-slate-700 tracking-tighter mb-6 italic">
                 WHAT OUR <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-purple-400">VISITORS SAY.</span>
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed">
                 Join our community of style enthusiasts. Discover how we've helped thousands redefine their wardrobe and confidence.
             </p>
             </div>

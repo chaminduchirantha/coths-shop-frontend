@@ -1,14 +1,14 @@
 
 function About() {
   return (
-    <div className="min-h-screen bg-slate-900 text-white pt-24">
+    <div className="min-h-screen bg-white text-black pt-24">
       {/* --- Hero Section --- */}
       <section className="max-w-7xl mx-auto px-6 py-16 text-center">
-        <span className="text-indigo-400 font-semibold tracking-widest uppercase text-sm">Our Story</span>
+        <span className="text-indigo-600 font-semibold tracking-widest uppercase text-sm">Our Story</span>
         <h1 className="text-4xl md:text-6xl font-bold mt-4 mb-6">
-          Redefining Fashion <br /> Through <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-cyan-400">Quality & Care</span>
+          Redefining Fashion <br /> Through <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-700 to-cyan-400">Quality & Care</span>
         </h1>
-        <p className="max-w-2xl mx-auto text-slate-400 text-lg leading-relaxed">
+        <p className="max-w-2xl mx-auto text-slate-900 text-lg leading-relaxed">
           Founded in 2024, Cloth Shop began with a simple mission: to provide high-quality, sustainable fashion that makes people feel confident every single day.
         </p>
       </section>
@@ -26,14 +26,14 @@ function About() {
           </div>
           <div className="space-y-6">
             <h2 className="text-3xl font-bold">Craftsmanship First</h2>
-            <p className="text-slate-400 leading-relaxed">
-              Every piece in our collection is hand-picked and checked for durability. We believe that fashion shouldn't be "fast"—it should be lasting. Our designers work with ethical factories to ensure that your style doesn't come at the cost of the environment.
+            <p className="text-slate-800 leading-relaxed">
+              Every piece in our collection is hand-picked and checked for durability. We believe that fashion shouldn't be "fast" it should be lasting. Our designers work with ethical factories to ensure that your style doesn't come at the cost of the environment.
             </p>
             <ul className="space-y-4">
               {['Ethically Sourced Materials', 'Premium Fabric Quality', 'Carbon Neutral Shipping'].map((item, index) => (
                 <li key={index} className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-indigo-400"></div>
-                  <span className="text-slate-300 font-medium">{item}</span>
+                  <div className="h-2 w-2 rounded-full bg-indigo-600"></div>
+                  <span className="text-slate-900 font-medium">{item}</span>
                 </li>
               ))}
             </ul>
@@ -47,7 +47,7 @@ function About() {
       <section className="py-20 text-center">
         <h2 className="text-3xl font-bold mb-6">Want to see our latest work?</h2>
         <a href="/collection">
-          <button className="px-10 py-4 bg-indigo-600 hover:bg-indigo-700 rounded-full font-bold transition-all shadow-lg hover:shadow-indigo-500/20">
+          <button className="px-10 py-4 bg-indigo-300 hover:bg-indigo-500 rounded-full font-bold transition-all shadow-lg hover:shadow-indigo-500/20">
             Browse the Collection
           </button>
         </a>
