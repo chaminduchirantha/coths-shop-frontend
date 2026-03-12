@@ -8,11 +8,11 @@ function Collection() {
 
   const products = [
     { id: 1, name: 'Silk Evening Gown', price: '$299', category: 'Formal', img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=800' },
-    { id: 2, name: 'Woolen Overcoat', price: '$180', category: 'Winter', img: 'https://images.unsplash.com/photo-1539533318280-3d233f20364b?auto=format&fit=crop&q=80&w=800' },
-    { id: 3, name: 'Linen Summer Shirt', price: '$85', category: 'Summer', img: 'https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?auto=format&fit=crop&q=80&w=800' },
-    { id: 4, name: 'Leather Handbag', price: '$450', category: 'Accessories', img: 'https://images.unsplash.com/photo-1584917033904-71649987f223?auto=format&fit=crop&q=80&w=800' },
+    { id: 3, name: 'Linen Summer Shirt mens', price: '$85', category: 'Summer', img: 'https://plus.unsplash.com/premium_photo-1691367279403-aaa787d264f6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8TGluZW4lMjBTdW1tZXIlMjBTaGlydHxlbnwwfHwwfHx8MA%3D%3D' },
+    { id: 4, name: 'Leather Handbag', price: '$450', category: 'Accessories', img: 'https://plus.unsplash.com/premium_photo-1695603437447-21cc2e206536?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bGVhdGhlciUyMGJhZ3xlbnwwfHwwfHx8MA%3D%3D' },
     { id: 5, name: 'Velvet Blazer', price: '$220', category: 'Formal', img: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=800' },
-    { id: 6, name: 'Cashmere Scarf', price: '$120', category: 'Winter', img: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&q=80&w=800' },
+    { id: 6, name: 'Wide Leg Jean ', price: '$120', category: 'Winter', img: 'https://gflock.lk/cdn/shop/files/05_0176dfca-a9a7-479d-ba59-2574704ddb08.jpg?v=1773163670&width=960' },
+    { id: 7, name: 'Hand Watch', price: '$450', category: 'Accessories', img: 'https://images.unsplash.com/photo-1736615494527-a0f4a70f1101?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fEhhbmQlMjBXYXRjaHxlbnwwfHwwfHx8MA%3D%3D' },
   ];
 
   const filteredProducts = activeCategory === 'All' 
