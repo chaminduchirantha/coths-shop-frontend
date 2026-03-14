@@ -81,7 +81,7 @@ function ProductsCardUser() {
   }, [page]);
 
   return (
-    <div className="min-h-screen bg-slate-800 text-white pt-24 pb-20 px-4 md:px-8">
+    <div className="min-h-screen bg-white text-black pt-24 pb-20 px-4 md:px-8">
       {/* Background Glows */}
       <div className="fixed top-[-10%] right-[-10%] w-500px h-500px bg-indigo-600/10 blur-[120px] rounded-full z-0 pointer-events-none"></div>
 
@@ -96,9 +96,9 @@ function ProductsCardUser() {
             <p className="text-slate-500 font-medium tracking-wide">Premium curated pieces for your unique style.</p>
           </div>
 
-          <button className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-indigo-500/50 transition-all group">
+          <button className="flex items-center gap-2 px-6 py-3 bg-slate-800 border border-white/10 rounded-2xl hover:bg-black text-white hover:border-indigo-500/50   transition-all group">
             <ShoppingBag size={18} className="text-indigo-400" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em]">My Orders</span>
+            <span className="text-xs font-bold uppercase text-white  tracking-[0.2em]">My Orders</span>
             <ChevronRight size={14} className="text-slate-600 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -111,7 +111,7 @@ function ProductsCardUser() {
             <input 
               type="text"
               placeholder="Search for your style..."
-              className="w-full bg-slate-900/50 border border-white/5 rounded-2xl py-4 pl-14 pr-6 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all backdrop-blur-xl text-sm placeholder:text-slate-600"
+              className="w-full bg-white border border-black rounded-2xl py-4 pl-14 pr-6 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all backdrop-blur-xl text-sm placeholder:text-slate-600"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -126,7 +126,7 @@ function ProductsCardUser() {
                 className={`whitespace-nowrap px-6 py-3.5 rounded-xl text-[10px] cursor-pointer font-black uppercase tracking-widest hover:translate-y-2 transition-all duration-300 ${
                   selected === cat.value 
                   ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 border-transparent' 
-                  : 'bg-white/5 border border-white/5 text-slate-400 hover:border-white/20'
+                  : 'bg-white/5 border border-black text-slate-600 hover:border-black'
                 }`}
               >
                 {cat.label}
@@ -171,9 +171,21 @@ function ProductsCardUser() {
                       {product.description}
                     </p>
                     
-                    {/* Size Badges (Optional) */}
-                    <div className="mb-6 flex gap-1.5">
-                       <span className="text-[9px] bg-white/5 px-2 py-1 rounded text-slate-400 uppercase font-bold border border-white/5">Available Size: {product.size}</span>
+                  {/* Premium Size Selection Section */}
+                    <div className="mb-8">
+                      <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-4 ml-1">
+                        Available Sizes
+                      </p>
+                      <div className="flex flex-wrap gap-3">
+                        {product.size.split(',').map((s: string) => (
+                          <div 
+                            key={s} 
+                            className="min-w-12.5 h-12 flex items-center justify-center px-4 rounded-xl border border-white/10 bg-white/5 text-slate-300 text-xs font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer hover:border-indigo-500 hover:text-indigo-400 hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] hover:-translate-y-1 active:scale-95"
+                          >
+                            {s.trim()}
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
                     {/* Add to Cart Button */}

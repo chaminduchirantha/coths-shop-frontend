@@ -269,7 +269,7 @@ const CheckoutPage: React.FC = () => {
             
             <div className="bg-white border border-slate-100 rounded-xl p-5 mb-8 flex gap-5">
               <div className="relative">
-                <div className="w-48 h-48 rounded-lg overflow-hidden bg-slate-100 border border-slate-200">
+                <div className="w-30 h-30 rounded-lg overflow-hidden bg-slate-100 border border-slate-200">
                   <img src={product.image} className="w-full h-full object-cover" alt={product.itemName} />
                 </div>
                 <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold h-6 w-6 flex items-center justify-center rounded-lg shadow-xl">

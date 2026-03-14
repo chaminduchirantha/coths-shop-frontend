@@ -96,7 +96,7 @@ function App() {
             <Route path="/product" element={<ProductsPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/orders" element={<OrdersPage />} />
+            <Route path="/orders" element={<RequireAuth roles={["USER"]}><OrdersPage /></RequireAuth>} />
           </Routes>
         </Layout>
       </Suspense>
