@@ -146,7 +146,7 @@ function ProductsCardUser() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {productList.length > 0 ? (
               productList.map((product) => (
-                <div key={product._id} className="group relative bg-slate-900/40  rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
+                <div key={product._id} className="group relative bg-slate-950/80  rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
                   {/* Image Container */}
                   <div className="h-72 relative overflow-hidden">
                     <img 
@@ -165,25 +165,27 @@ function ProductsCardUser() {
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-1">
                       <h3 className="font-bold text-white text-lg tracking-tight line-clamp-1">{product.itemName}</h3>
-                      <span className="text-indigo-400 font-black tracking-tighter">LKR {product.price}</span>
+                      <span className="text-black font-black tracking-tighter">LKR {product.price}</span>
                     </div>
-                    <p className="text-slate-500 text-[11px] mb-6 line-clamp-2 font-medium">
+                    <p className="text-slate-900 text-[11px] mb-6 line-clamp-2 font-medium">
                       {product.description}
                     </p>
                     
                   {/* Premium Size Selection Section */}
-                    <div className="mb-8">
-                      <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 mb-4 ml-1">
+                    {/* Trending Products Style Size Selection */}
+                    <div className="mt-4 mb-6">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3 ml-1">
                         Available Sizes
                       </p>
-                      <div className="flex flex-wrap gap-3">
+                      
+                      <div className="flex flex-wrap gap-2">
                         {product.size.split(',').map((s: string) => (
-                          <div 
-                            key={s} 
-                            className="min-w-12.5 h-12 flex items-center justify-center px-4 rounded-xl border border-white/10 bg-white/5 text-slate-300 text-xs font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer hover:border-indigo-500 hover:text-indigo-400 hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] hover:-translate-y-1 active:scale-95"
+                          <button
+                            key={s}
+                            className="w-10 h-10 flex items-center justify-center border border-white/10 bg-white/5 rounded-xl text-[11px] font-bold text-slate-300 uppercase transition-all duration-300 hover:border-indigo-500 hover:text-white hover:bg-indigo-500/10 active:scale-90"
                           >
                             {s.trim()}
-                          </div>
+                          </button>
                         ))}
                       </div>
                     </div>
