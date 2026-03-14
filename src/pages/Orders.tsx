@@ -311,6 +311,9 @@ const CheckoutPage: React.FC = () => {
               <div className="flex flex-col justify-center">
                 <h3 className="text-lg font-bold text-black mb-1 leading-tight">{product.itemName}</h3>
                 <p className="text-slate-500 text-xs italic mb-2 line-clamp-1">{product.description}</p>
+                {formData.size && (
+                  <p className="text-slate-700 text-xs font-bold uppercase mb-2">Size: {formData.size}</p>
+                )}
                 <div className="text-xs text-slate-600 font-medium">LKR <span className="text-xl text-black font-bold tracking-tight">{validPrice.toLocaleString(undefined, {minimumFractionDigits: 2})}</span></div>
               </div>
             </div>

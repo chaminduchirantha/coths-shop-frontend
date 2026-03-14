@@ -146,7 +146,7 @@ function ProductsCardUser() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {productList.length > 0 ? (
               productList.map((product) => (
-                <div key={product._id} className="group relative bg-slate-950/80  rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
+                <div key={product._id} className="group relative bg-white  border-black  rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
                   {/* Image Container */}
                   <div className="h-72 relative overflow-hidden">
                     <img 
@@ -164,7 +164,7 @@ function ProductsCardUser() {
                   {/* Info Section */}
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-1">
-                      <h3 className="font-bold text-white text-lg tracking-tight line-clamp-1">{product.itemName}</h3>
+                      <h3 className="font-bold text-black text-lg tracking-tight line-clamp-1">{product.itemName}</h3>
                       <span className="text-black font-black tracking-tighter">LKR {product.price}</span>
                     </div>
                     <p className="text-slate-900 text-[11px] mb-6 line-clamp-2 font-medium">
@@ -190,7 +190,7 @@ function ProductsCardUser() {
                     </div>
 
                     {/* Add to Cart Button */}
-                    <button className="w-full relative overflow-hidden group/btn bg-white text-slate-950 py-4 rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer">
+                    <button className="w-full relative overflow-hidden group/btn bg-indigo-300 text-slate-950 py-4 rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer">
                       <div className="absolute inset-0 w-0 bg-indigo-600 transition-all duration-300 group-hover/btn:w-full"></div>
                       <ShoppingCart size={16} className="relative z-10 group-hover/btn:text-white transition-colors" />
                       <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em] group-hover/btn:text-white transition-colors">Add to Cart</span>
