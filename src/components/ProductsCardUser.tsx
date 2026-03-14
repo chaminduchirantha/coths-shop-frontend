@@ -171,20 +171,19 @@ function ProductsCardUser() {
                       {product.description}
                     </p>
                     
-                  {/* Premium Size Selection Section */}
-                    {/* Trending Products Style Size Selection */}
-                    <div className="mt-4 mb-6">
-                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3 ml-1">
+                    {/* Premium Size Selection Section */}
+                    <div className="w-full mb-8">
+                      <p className="text-sm text-center font-black uppercase tracking-[0.3em] text-black mb-4 ml-1">
                         Available Sizes
                       </p>
                       
-                      <div className="flex flex-wrap gap-2">
-                        {product.size.split(',').map((s: string) => (
-                          <button
-                            key={s}
-                            className="w-10 h-10 flex items-center justify-center border border-white/10 bg-white/5 rounded-xl text-[11px] font-bold text-slate-300 uppercase transition-all duration-300 hover:border-indigo-500 hover:text-white hover:bg-indigo-500/10 active:scale-90"
+                      <div className="w-full flex border rounded-xl border-black bg-slate-200 overflow-hidden divide-x divide-black backdrop-blur-md shadow-2xl">
+                        {product.size && product.size.split(' ').map((sizeLabel, index) => (
+                          <button 
+                            key={index} 
+                            className="flex-1 py-5 text-[14px] font-black text-slate-900 uppercase tracking-[0.2em] transition-all duration-300 hover:bg-white/5 hover:text-white active:bg-indigo-500/20"
                           >
-                            {s.trim()}
+                            {sizeLabel}
                           </button>
                         ))}
                       </div>

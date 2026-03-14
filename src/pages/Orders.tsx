@@ -24,6 +24,8 @@ const CheckoutPage: React.FC = () => {
     size: ""
   };
 
+  const availableSizes = product.size ? product.size.trim().split(/\s+/) : [];
+
   // Utility to clean price strings
   const parsePrice = (price: any): number => {
     try {
@@ -49,7 +51,7 @@ const CheckoutPage: React.FC = () => {
     paymentMethod: 'card',
     orderDate: new Date().toISOString().split('T')[0],
     amount: 0,
-    size: product.size || '',
+    size: availableSizes.length > 0 ? availableSizes[0] : '', 
     description: product.description || '',
   });
 
@@ -77,6 +79,10 @@ const CheckoutPage: React.FC = () => {
       }
       return { ...prev, [name]: value };
     });
+  };
+
+  const handleSizeSelect = (selectedSize: string) => {
+    setFormData(prev => ({ ...prev, size: selectedSize }));
   };
 
   const handleOrderSubmit = async () => {
@@ -151,6 +157,32 @@ const CheckoutPage: React.FC = () => {
                 />
               </div>
             </section>
+
+            {availableSizes.length > 0 && (
+              <section className="mb-10">
+                <div className="flex items-center gap-2 mb-6">
+                  <span className="text-xs font-bold text-black border border-black rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                  <h2 className="text-sm font-semibold text-black uppercase tracking-wider">Select Size</h2>
+                </div>
+                
+                <div className="w-full flex border border-slate-300 bg-slate-50 overflow-hidden divide-x divide-slate-300 rounded-xl shadow-sm">
+                    {availableSizes.map((sizeLabel: string, index: number) => (
+                    <button 
+                      key={index}
+                      type="button" 
+                      onClick={() => handleSizeSelect(sizeLabel)}
+                      className={`flex-1 py-4 text-[12px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${
+                      formData.size === sizeLabel 
+                        ? 'bg-black text-white shadow-inner' 
+                        : 'text-slate-500 hover:bg-slate-200 hover:text-black'
+                      }`}
+                    >
+                      {sizeLabel}
+                    </button>
+                    ))}
+                </div>
+              </section>
+            )}
 
             {/* Step 2: Shipping */}
             <section className="mb-10">
