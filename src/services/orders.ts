@@ -20,18 +20,18 @@ export const OrderSave = async (data: OrdersList) => {
   return res.data
 }
 
-// export const getAllFishOrder = async (page: number, limit: number) => {
-//   const res = await api.get(`/orders/allOrders?page=${page}&limit=${limit}`);
-//   return res.data;
-// };
+export const getAllOrder = async (page: number, limit: number) => {
+  const res = await api.get(`/orders/allOrders?page=${page}&limit=${limit}`);
+  return res.data;
+};
 
-// export const updateFishOrderStatus = async (id: string, status: string) => {
-//   const res = await api.put(`/orders/updateStatus/${id}`, { status });
-//   return res.data;
-// };
+export const updateOrderStatus = async (id: string, status: string) => {
+  const res = await api.put(`/orders/updateStatus/${id}`, { status });
+  return res.data;
+};
 
 
-// export const getUserOrders = async (email: string) => {
-//   const res = await api.get(`/orders/viewOrder/${email}`);
-//   return res.data;
-// };
+export const getUserOrders = async (email: string) => {
+  const res = await api.get(`/orders/viewOrder/${email}`);
+  return res.data;
+};

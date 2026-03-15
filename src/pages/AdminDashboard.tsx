@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import ProductsAdmin from '../components/productsAdmin';
+import OrdersViewAdmin from '../components/OrdersViewAdmin';
+import OrdersViewDashBoard from '../components/OrdersViewDashBoard';
+
 function AdminDashboard() {
   // 1. Logic: State to track which view to show
   const [activeTab, setActiveTab] = useState('Dashboard');
@@ -34,7 +37,7 @@ function AdminDashboard() {
         ))}
       </div>
       <div className="p-10 bg-slate-900 rounded-2xl border border-white/5 text-center">
-         <p className="text-slate-400">Recent Orders Table and Activity Feed would appear here...</p>
+          <OrdersViewDashBoard/>
       </div>
     </div>
   );
@@ -43,12 +46,16 @@ function AdminDashboard() {
     <ProductsAdmin />
   );
 
+  const OrdersView = () => (
+    <OrdersViewAdmin />
+  );
+
   // 4. Logic: Render the correct view based on activeTab
   const renderContent = () => {
     switch (activeTab) {
       case 'Dashboard': return <DashboardHome />;
       case 'Products': return <ProductsView />;
-      case 'Orders': return <div className="text-white p-10">Orders View Loading...</div>;
+      case 'Orders': return <OrdersView /> ;
       default: return <DashboardHome />;
     }
   };

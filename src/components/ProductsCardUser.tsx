@@ -146,7 +146,7 @@ function ProductsCardUser() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {productList.length > 0 ? (
               productList.map((product) => (
-                <div key={product._id} className="group relative bg-white  border-black  rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
+                <div key={product._id} className="group relative bg-white border border-black  rounded-2xl overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
                   {/* Image Container */}
                   <div className="h-72 relative overflow-hidden">
                     <img 
