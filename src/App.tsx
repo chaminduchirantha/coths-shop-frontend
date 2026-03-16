@@ -3,6 +3,8 @@ import { Route, BrowserRouter, Routes, useLocation } from "react-router-dom"
 import Header from "./components/Header"
 import { AuthProvider, useAuth } from "./context/authContext"
 import AlertPopups from "./components/AlertPopups"
+import  Footer from "./components/Footer"
+
 
 const Home = lazy(() => import("./pages/home"))
 const About = lazy(() => import("./pages/About"))
@@ -60,10 +62,10 @@ const RequireAuth = ({ children, roles }: RequireAuthTypes) => {
 function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const hideHeader = location.pathname === '/register' || location.pathname === '/login' || location.pathname === '/admin';
-
   return (
     <>
       {!hideHeader && <Header />}
+
       {children}
     </>
   );
@@ -99,7 +101,12 @@ function App() {
             <Route path="/orders" element={<RequireAuth roles={["USER"]}><OrdersPage /></RequireAuth>} />
           </Routes>
         </Layout>
+
+        
       </Suspense>
+
+      <Footer/>
+      
     </BrowserRouter>
     </AuthProvider>
   )

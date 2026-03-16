@@ -311,7 +311,7 @@ const CheckoutPage: React.FC = () => {
             {/* Product Details - Image Eka Yatin */}
             <div className="flex flex-col mb-8">
               <h3 className="text-2xl font-black text-black mb-2 leading-tight uppercase">{product.itemName}</h3>
-              <p className="text-slate-500 text-sm italic mb-5 line-clamp-2">{product.desciption}</p>
+              <p className="text-slate-500 text-sm italic mb-5">{product.desciption}</p>
               
               {/* Size & Price Box */}
               <div className="flex justify-between items-center bg-slate-50 p-4 rounded-xl border border-slate-200">

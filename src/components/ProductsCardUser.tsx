@@ -165,9 +165,9 @@ function ProductsCardUser() {
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-1">
                       <h3 className="font-bold text-black text-lg tracking-tight line-clamp-1">{product.itemName}</h3>
-                      <span className="text-black font-black tracking-tighter">LKR {product.price}</span>
+                      <span className="text-black text-md font-black tracking-tighter">LKR {product.price}</span>
                     </div>
-                    <p className="text-slate-900 text-[11px] mb-6 line-clamp-2 font-medium">
+                    <p className="text-slate-900 text-sm mb-6  font-medium">
                       {product.description}
                     </p>
                     
@@ -181,7 +181,7 @@ function ProductsCardUser() {
                         {product.size && product.size.split(' ').map((sizeLabel, index) => (
                           <button 
                             key={index} 
-                            className="flex-1 py-5 text-[14px] font-black text-slate-900 uppercase tracking-[0.2em] transition-all duration-300 hover:bg-white/5 hover:text-white active:bg-indigo-500/20"
+                            className="flex-1 py-3 text-[12px] font-black text-slate-900 uppercase tracking-[0.2em] transition-all duration-300 hover:bg-white/5 hover:text-white active:bg-indigo-500/20"
                           >
                             {sizeLabel}
                           </button>
