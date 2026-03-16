@@ -75,7 +75,7 @@ function App() {
     <BrowserRouter>
       <Suspense
         fallback={
-          <div className="h-screen w-full flex items-center justify-center bg-slate-900">
+          <div className="h-screen w-full flex items-center justify-center bg-white">
             <div className="flex flex-col items-center gap-4">
               <div className="w-12 h-12 border-4 border-indigo-400/20 border-t-indigo-400 rounded-full animate-spin"></div>
               <p className="text-slate-400 font-medium animate-pulse">Loading Cloth Shop...</p>

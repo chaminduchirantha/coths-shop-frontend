@@ -65,8 +65,8 @@ function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 md:p-10 pt-28">
-      <div className="max-w-6xl w-full bg-slate-800/40 backdrop-blur-xl rounded-4xl border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4 md:p-10 pt-28">
+      <div className="max-w-6xl w-full bg-slate-800 backdrop-blur-xl rounded-4xl border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl">
         
         <div className="w-full md:w-1/2 p-8 md:p-14 order-2 md:order-1"> 
           <div className="mb-10 text-center md:text-left">

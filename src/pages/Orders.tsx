@@ -292,56 +292,71 @@ const CheckoutPage: React.FC = () => {
         </div>
 
         {/* Right Side: Order Summary */}
-        <aside className="w-full lg:w-[40%] order-1 lg:order-2 sticky top-28 self-start">
-          <div className="bg-white border border-slate-200 rounded-2xl p-8 sticky top-28 shadow-lg">
+        <aside className="w-full lg:w-[40%] order-2 lg:order-2">
+          {/* h-full saha flex flex-col damma left height ekata match wenna */}
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-lg h-full flex flex-col">
             
-            <h2 className="text-xl font-bold text-black mb-8 flex items-center gap-3">
+            <h2 className="text-xl font-bold text-black mb-6 flex items-center gap-3">
               <ShoppingBag className="text-black" size={24} /> <span className="uppercase tracking-wide">Summary</span>
             </h2>
             
-            <div className="bg-white border border-slate-100 rounded-xl p-5 mb-8 flex gap-5">
-              <div className="relative">
-                <div className="w-30 h-30 rounded-lg overflow-hidden bg-slate-100 border border-slate-200">
-                  <img src={product.image} className="w-full h-full object-cover" alt={product.itemName} />
-                </div>
-                <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold h-6 w-6 flex items-center justify-center rounded-lg shadow-xl">
-                  {currentQty}
-                </span>
-              </div>
-              <div className="flex flex-col justify-center">
-                <h3 className="text-lg font-bold text-black mb-1 leading-tight">{product.itemName}</h3>
-                <p className="text-slate-500 text-xs italic mb-2 line-clamp-1">{product.description}</p>
+            {/* Loku Image Section */}
+            <div className="relative w-full  sm:aspect-square bg-slate-100 rounded-xl overflow-hidden mb-6 border border-slate-200">
+              <img src={product.image} className="w-full h-full object-cover" alt={product.itemName} />
+              <span className="absolute top-4 right-4 bg-black text-white text-sm font-bold h-8 w-8 flex items-center justify-center rounded-xl shadow-xl">
+                {currentQty}
+              </span>
+            </div>
+
+            {/* Product Details - Image Eka Yatin */}
+            <div className="flex flex-col mb-8">
+              <h3 className="text-2xl font-black text-black mb-2 leading-tight uppercase">{product.itemName}</h3>
+              <p className="text-slate-500 text-sm italic mb-5 line-clamp-2">{product.desciption}</p>
+              
+              {/* Size & Price Box */}
+              <div className="flex justify-between items-center bg-slate-50 p-4 rounded-xl border border-slate-200">
                 {formData.size && (
-                  <p className="text-slate-700 text-xs font-bold uppercase mb-2">Size: {formData.size}</p>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Selected Size</span>
+                    <span className="text-base text-black font-black uppercase">{formData.size}</span>
+                  </div>
                 )}
-                <div className="text-xs text-slate-600 font-medium">LKR <span className="text-xl text-black font-bold tracking-tight">{validPrice.toLocaleString(undefined, {minimumFractionDigits: 2})}</span></div>
+                <div className="flex flex-col text-right ml-auto">
+                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Unit Price</span>
+                  <div className="text-sm text-slate-600 font-medium">
+                    LKR <span className="text-xl text-black font-bold tracking-tight">{validPrice.toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-4 px-1">
-              <div className="flex justify-between text-slate-600 text-xs font-semibold uppercase tracking-wider">
+            {/* Totals Section - mt-auto nisa card eke yatatama thallu wenawa */}
+            <div className="space-y-4 pt-6 border-t border-slate-200 mt-auto">
+              <div className="flex justify-between text-slate-600 text-xs font-bold uppercase tracking-wider">
                 <span>Subtotal</span>
                 <span className="text-black text-sm">LKR {subtotal.toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
               </div>
-              <div className="flex justify-between text-slate-600 text-xs font-semibold uppercase tracking-wider">
+              <div className="flex justify-between text-slate-600 text-xs font-bold uppercase tracking-wider items-center">
                 <span>Shipping Estimate</span>
                 <span className="text-slate-400 text-[9px] font-bold uppercase tracking-wider bg-slate-100 px-2 py-1 rounded">Calculated Next</span>
               </div>
+              
               <div className="h-px bg-slate-200 my-4"></div>
+              
               <div className="flex justify-between items-end pt-2">
                 <div>
-                  <p className="text-xs text-black font-extrabold uppercase tracking-wide italic">GRAND TOTAL</p>
-                  <p className="text-[10px] text-slate-600 uppercase italic">All Taxes Included</p>
+                  <p className="text-sm text-black font-extrabold uppercase tracking-wide italic">GRAND TOTAL</p>
+                  <p className="text-[10px] text-slate-600 uppercase italic mt-1">All Taxes Included</p>
                 </div>
-                <div className="text-xs text-slate-600 font-medium">LKR <span className="text-3xl text-black font-black tracking-tighter">{subtotal.toLocaleString(undefined, {minimumFractionDigits: 2})}</span></div>
+                <div className="text-xs text-slate-600 font-medium">LKR <span className="text-3xl md:text-4xl text-black font-black tracking-tighter">{subtotal.toLocaleString(undefined, {minimumFractionDigits: 2})}</span></div>
               </div>
             </div>
 
-            <div className="mt-8 flex items-center justify-center gap-2 opacity-40 grayscale">
+            {/* Security Badge */}
+            <div className="mt-8 pt-6 flex items-center justify-center gap-2 opacity-40 grayscale border-t border-slate-100">
               <ShieldCheck size={14} className="text-slate-700" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900">100% Secure & Encrypted Transaction</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900">100% Secure & Encrypted</span>
             </div>
-
           </div>
         </aside>
       </div>
